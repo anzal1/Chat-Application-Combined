@@ -3,6 +3,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 
 // layouts
 import DashboardLayout from "../layouts/dashboard";
+import AuthLayout from "../layouts/auth";
 
 // config
 import { DEFAULT_PATH } from "../config";
@@ -32,6 +33,16 @@ export default function Router() {
         { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
+    {
+      path: "/auth",
+      element: <AuthLayout />,
+      children: [
+        { path: "login", element: <LoginPage /> },
+        { path: "register", element: <RegisterPage /> },
+        { path: "reset-password", element: <ResetPasswordPage /> },
+        { path: "new-password", element: <NewPasswordPage /> },
+      ],
+    },
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
 }
@@ -43,6 +54,14 @@ const Conversation = Loadable(
   lazy(() => import("../pages/dashboard/Conversation"))
 );
 const Chats = Loadable(lazy(() => import("../pages/dashboard/Chats")));
-const Contact = Loadable(lazy(() => import("../sections/Doashboard/Contact")));
+const Contact = Loadable(lazy(() => import("../sections/dashboard/Contact")));
 const Page404 = Loadable(lazy(() => import("../pages/Page404")));
 const Settings = Loadable(lazy(() => import("../pages/dashboard/Settings")));
+const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
+const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
+const ResetPasswordPage = Loadable(
+  lazy(() => import("../pages/auth/ResetPassword"))
+);
+const NewPasswordPage = Loadable(
+  lazy(() => import("../pages/auth/NewPassword"))
+);

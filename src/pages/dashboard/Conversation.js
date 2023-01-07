@@ -13,7 +13,7 @@ import {
   ReplyMsg,
   TextMsg,
   Timeline,
-} from "../../sections/Dashboard/Conversation";
+} from "../../sections/dashboard/Conversation";
 
 const Conversation = ({ isMobile, menu }) => {
   return (
